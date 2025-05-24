@@ -41,13 +41,19 @@ python src/main.py
 ```
 
 ## Tecnologias Utilizadas
-```bash
-* **Python versão 3**: A linguagem de programação principal para o desenvolvimento da lógica de backend e do sistema de console.
-* **Módulo `sqlite3` do Python**: Esta é a biblioteca padrão do Python utilizada para interagir com o banco de dados SQLite3, permitindo a persistência dos dados dos pacientes.
-* * **Flask**: Uma biblioteca web para Python, utilizado (ou a ser utilizado) para a construção da interface de usuário e gerenciamento das rotas web.
-* **HTML**: Para a estrutura das páginas da interface web (ex: `login.html`).
-* **CSS**: Para a estilização visual das páginas da interface web (ex: `style.css`).
-```
+
+1-Python versão 3: Linguagem principal para backend e sistema de console.
+
+2-Módulo sqlite3 do Python: Biblioteca nativa para interagir com banco de dados SQLite.
+
+3-Flask: Framework web para construção da interface e gerenciamento de rotas.
+
+4-HTML: Estrutura das páginas da interface (ex: login.html).
+
+5-CSS: Estilização visual das páginas (ex: style.css).
+
+
+
 ---
 
 ## Estrutura dos Arquivos
