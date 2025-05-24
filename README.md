@@ -40,7 +40,7 @@ Para rodar a versão de console do sistema, execute o arquivo principal:
 python src/main.py
 
 
-##Tecnologias Utilizadas:
+###Tecnologias Utilizadas:
 
 * **Python versão 3**: A linguagem de programação principal para o desenvolvimento da lógica de backend e do sistema de console.
 * **Módulo `sqlite3` do Python**: Esta é a biblioteca padrão do Python utilizada para interagir com o banco de dados SQLite3, permitindo a persistência dos dados dos pacientes.
@@ -68,7 +68,7 @@ Estrutura dos Arquivos
 ├── .gitignore                      # Arquivo que especifica quais arquivos e diretórios o Git deve ignorar (ex: arquivos de banco de dados,                                     caches, etc.).
 └── README.md                       # Este arquivo, contendo a descrição do projeto e instruções.
 
-Integrantes do grupo :
+##Integrantes do grupo :
 *Paulo 
 *Rafaerl Mesquita 
 *Guilherme Liarte de Oliveira 
