@@ -41,16 +41,17 @@ python src/main.py
 ```
 
 ## Tecnologias Utilizadas
-
+```bash
 * **Python versão 3**: A linguagem de programação principal para o desenvolvimento da lógica de backend e do sistema de console.
 * **Módulo `sqlite3` do Python**: Esta é a biblioteca padrão do Python utilizada para interagir com o banco de dados SQLite3, permitindo a persistência dos dados dos pacientes.
 * * **Flask**: Uma biblioteca web para Python, utilizado (ou a ser utilizado) para a construção da interface de usuário e gerenciamento das rotas web.
 * **HTML**: Para a estrutura das páginas da interface web (ex: `login.html`).
 * **CSS**: Para a estilização visual das páginas da interface web (ex: `style.css`).
-
+```
 ---
 
-Estrutura dos Arquivos
+## Estrutura dos Arquivos
+```bash
 .
 ├── src/
 │   ├── db/
@@ -67,9 +68,10 @@ Estrutura dos Arquivos
 │           └── style.css           # Arquivo principal de estilos CSS.
 ├── .gitignore                      # Arquivo que especifica quais arquivos e diretórios o Git deve ignorar (ex: arquivos de banco de dados,                                     caches, etc.).
 └── README.md                       # Este arquivo, contendo a descrição do projeto e instruções.
-
+``` 
 ## Integrantes do grupo :
+```bash
 *Paulo 
-*Rafaerl Mesquita 
+*Rafarl Mesquita 
 *Guilherme Liarte de Oliveira 
 *João Marcos Teixeira 
