@@ -38,7 +38,7 @@ Certifique-se de que você tem o **Python versão 3** instalado. Você pode baix
 Para rodar a versão de console do sistema, execute o arquivo principal:
 ```bash
 python src/main.py
-
+```
 
 ## Tecnologias Utilizadas
 
