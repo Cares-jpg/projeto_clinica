@@ -76,8 +76,8 @@ python src/main.py
 └── README.md                       # Este arquivo, contendo a descrição do projeto e instruções.
 ``` 
 ## Integrantes do grupo :
-```bash
-*Paulo 
-*Rafarl Mesquita 
-*Guilherme Liarte de Oliveira 
-*João Marcos Teixeira 
+
+### Paulo 
+### Rafael Mesquita 
+### Guilherme Liarte de Oliveira 
+### João Marcos Teixeira 
