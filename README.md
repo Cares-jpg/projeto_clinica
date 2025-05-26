@@ -77,7 +77,7 @@ python src/main.py
 ``` 
 ## Integrantes do grupo :
 
-### Paulo 
+### Paulo Henrique
 ### Rafael Mesquita 
 ### Guilherme Liarte de Oliveira 
 ### João Marcos Teixeira 

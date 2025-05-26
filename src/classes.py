@@ -1,4 +1,3 @@
-from db.tabelas import inserir_usuario
 class NoPaciente:
     def __init__(self, paciente):
         self.paciente = paciente
@@ -53,10 +52,6 @@ class GerenciadorPacientes:
             'senha': senha,
             'triagem': triagem
         }
-        try:
-            inserir_usuario(nome, esp, tipo, str(senha), triagem)
-        except Exception as e:
-            print(f"Erro ao salvar no banco {e}")
 
         novo_no = NoPaciente(paciente)
 

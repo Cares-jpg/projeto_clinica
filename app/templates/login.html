@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clínica Geral - Login</title>
-    <link rel="stylesheet" href="{{url_for('static', filename = 'css/login.css')}}">
-</head>
-<body>
-    <div class="container">
+{%extends 'base.html' %}
+
+{% block head %} 
+
+<title>Clínica Geral - Login</title>
+<link rel="stylesheet" href="{{url_for('static', filename = 'css/login.css')}}">
+
+{% endblock %}
+{% block body %} 
+<div class="container">
         <img src="{{url_for('static', filename = 'image/login/logo_branca_clinica.png')}}" alt="logo da clínica" class="logo">
         
         <div class="login-card">
@@ -27,5 +27,4 @@
             </form>
         </div>
     </div>
-</body>
-</html> 
+{% endblock %}
