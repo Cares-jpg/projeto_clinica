@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clínica Geral - Login</title>
-    <link rel="stylesheet" href="../styles\css\login.css">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/login.css')}}">
 </head>
 <body>
     <div class="container">
-        <img src="../images/login/logo_branca_clinica.png" alt="logo da clínica" class="logo">
+        <img src="{{url_for('static', filename = 'image/login/logo_branca_clinica.png')}}" alt="logo da clínica" class="logo">
         
         <div class="login-card">
             <h2>Login</h2>
