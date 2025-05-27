@@ -27,30 +27,49 @@
         <img src="{{ url_for('static', filename='image/home/bem_vindo.png') }}" alt="Bem-vindo" class="welcome-image" />
     </section>
 
-    <section id="listar" class="listar-pacientes">
-        <h2>Pacientes Cadastrados</h2>
-        <ul>
-            {% if pacientes %}
+<section id="listar" class="listar-pacientes">
+    <h2>Pacientes Cadastrados</h2>
+    {% if pacientes %}
+    <div class="table-container">
+        <table class="paciente-tabela">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Tipo</th>
+                    <th>Triagem</th>
+                    <th>Senha</th>
+                    <th>Especialidade</th>
+                </tr>
+            </thead>
+            <tbody>
                 {% for paciente in pacientes %}
-                    <li>
-                        Nome: {{ paciente.name }} | Tipo: {{ paciente.type }} | Triagem: {{ paciente.triage }} | Senha: {{ paciente.password }} | Especialidade: {{ paciente.specialty }}
-                    </li>
+                <tr>
+                    <td>{{ paciente.name }}</td>
+                    <td>{{ paciente.type }}</td>
+                    <td>{{ paciente.triage }}</td>
+                    <td>{{ paciente.password }}</td>
+                    <td>{{ paciente.specialty }}</td>
+                </tr>
                 {% endfor %}
-            {% else %}
-                <li>Nenhum paciente cadastrado.</li>
-            {% endif %}
-        </ul>
-    </section>
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <p style="text-align:center;">Nenhum paciente cadastrado.</p>
+    {% endif %}
+</section>
 
-    <section id="chamar" class="chamar-paciente">
-        <h2>Chamar Próximo Paciente</h2>
-        <ul>
-            {% for esp in especialidades %}
-                <li>
-                    {{ esp }} - <a href="{{ url_for('chamarPaciente', especialidade=esp) }}">Chamar</a>
-                </li>
-            {% endfor %}
-        </ul>
-    </section>
+
+<section id="chamar" class="chamar-paciente">
+    <h2>Chamar Próximo Paciente</h2>
+    <div class="chamar-botoes">
+        {% for esp in especialidades %}
+            <form method="get" action="{{ url_for('chamarPaciente', especialidade=esp) }}">
+                <button type="submit" class="chamar-btn">{{ esp }}</button>
+            </form>
+        {% endfor %}
+    </div>
+</section>
+
 </main>
 {% endblock %}

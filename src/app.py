@@ -25,7 +25,7 @@ def loginPage():
             session['usuario'] = username
             return redirect(url_for('homePage'))
         else:
-            flash('Login inválido')
+            flash('Login inválido', 'error')
     return render_template('login.html')
 
 
@@ -76,9 +76,10 @@ def historicoPage():
     return render_template('historico.html', pacientes=pacientes)
 
 
-with app.app_context():
-    db.create_all()
+
 
 
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)

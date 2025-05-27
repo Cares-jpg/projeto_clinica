@@ -180,3 +180,91 @@ body {
         grid-template-columns: 1fr;
     }
 } 
+.table-container {
+    overflow-x: auto;
+    margin: 2rem auto;
+    max-width: 100%;
+    padding: 0 20px;
+}
+
+.paciente-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.paciente-tabela thead {
+    background-color: #00A3E0;
+    color: white;
+}
+
+.paciente-tabela th,
+.paciente-tabela td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+}
+
+.paciente-tabela tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+@media (max-width: 768px) {
+    .paciente-tabela th,
+    .paciente-tabela td {
+        font-size: 0.85rem;
+        padding: 0.75rem;
+    }
+}
+/* Chamar Paciente */
+.chamar-paciente {
+    padding: 4rem 2rem;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.chamar-paciente h2 {
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.chamar-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.chamar-btn {
+    background-color: #00A3E0;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 180px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.chamar-btn:hover {
+    background-color: #0082b3;
+    transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+    .chamar-btn {
+        font-size: 0.9rem;
+        padding: 0.65rem 1.2rem;
+        min-width: unset;
+        width: 100%;
+        max-width: 300px;
+    }
+}

@@ -57,12 +57,18 @@ class GerenciadorPacientes:
         return "Paciente cadastrado com sucesso!"
 
     def chamar_paciente(self, especialidade):
-        paciente = Paciente.query.filter_by(specialty=especialidade).order_by(Paciente.id).first()
+        paciente = Paciente.query.filter_by(specialty=especialidade, type='Preferencial').order_by(Paciente.id).first()
+    
+        if not paciente:
+            paciente = Paciente.query.filter_by(specialty=especialidade, type='Normal').order_by(Paciente.id).first()
+
         if paciente:
             db.session.delete(paciente)
             db.session.commit()
             return f"Chamando senha {paciente.password} - {paciente.name} ({paciente.type}, {paciente.triage})"
+    
         return f"Não há pacientes aguardando em {especialidade}."
+
 
     def listar_pacientes(self):
         return Paciente.query.order_by(Paciente.id).all()
