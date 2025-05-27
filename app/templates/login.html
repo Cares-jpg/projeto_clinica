@@ -7,12 +7,23 @@
 
 {% endblock %}
 {% block body %} 
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="flash-messages">
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
 <div class="container">
         <img src="{{url_for('static', filename = 'image/login/logo_branca_clinica.png')}}" alt="logo da clínica" class="logo">
         
         <div class="login-card">
             <h2>Login</h2>
-            <form action="/login" method="POST">
+            <form action="{{ url_for('loginPage') }}" method="post">
                 <div class="form-group">
                     <label for="username">Usuário</label>
                     <input type="text" id="username" name="username" required>

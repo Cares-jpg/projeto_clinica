@@ -1,12 +1,32 @@
-from flask import Flask, render_template, url_for,redirect,request
+from flask import Flask, render_template, url_for, request, redirect, session, flash
 from models.database import db, Paciente
+import secrets
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///clinica.db'
-
+app.secret_key = secrets.token_hex(16)
 db.init_app(app)
 
-@app.route('/')
+
+usuario = {
+    'username': 'admin',
+    'password': '1234'
+}
+
+
+@app.route('/', methods = ['GET', 'POST'])
 def loginPage():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        if username == usuario['username'] and password == usuario['password']:
+            session['usuario'] = username
+            return redirect(url_for('homePage'))
+    
+        else:
+            flash('Login invalido, tente novamente')
+            return redirect(url_for('loginPage'))
     return render_template('login.html')
 
 @app.route('/home')
