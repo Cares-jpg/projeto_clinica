@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Clínica Geral</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />
+{% endblock %}
+
+{% block body %}
+<header class="header">
+    <div class="container">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='image/home/logo_clinica.png') }}" alt="Logo da Clínica Geral" class="logo" />
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="{{ url_for('homePage') }}">Início</a></li>
+                <li><a href="{{ url_for('cadastroPage') }}">Cadastrar Paciente</a></li>
+                <li><a href="#listar">Listar Pacientes</a></li>
+                <li><a href="#chamar">Chamar Paciente</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <img src="{{ url_for('static', filename='image/home/bem_vindo.png') }}" alt="Bem-vindo" class="welcome-image" />
+    </section>
+
+    <section id="listar" class="listar-pacientes">
+        <h2>Pacientes Cadastrados</h2>
+        <ul>
+            {% if pacientes %}
+                {% for paciente in pacientes %}
+                    <li>
+                        Nome: {{ paciente.name }} | Tipo: {{ paciente.type }} | Triagem: {{ paciente.triage }} | Senha: {{ paciente.password }} | Especialidade: {{ paciente.specialty }}
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li>Nenhum paciente cadastrado.</li>
+            {% endif %}
+        </ul>
+    </section>
+
+    <section id="chamar" class="chamar-paciente">
+        <h2>Chamar Próximo Paciente</h2>
+        <ul>
+            {% for esp in especialidades %}
+                <li>
+                    {{ esp }} - <a href="{{ url_for('chamarPaciente', especialidade=esp) }}">Chamar</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+</main>
+{% endblock %}
