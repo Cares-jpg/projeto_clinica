@@ -18,7 +18,7 @@ usuario = {
 @app.route('/', methods=['GET', 'POST'])
 def loginPage():
     if request.method == 'POST':
-        username = request.form['username']
+        username = request.form['username'].strip()
         password = request.form['password']
 
         if username == usuario['username'] and password == usuario['password']:
@@ -37,7 +37,7 @@ def homePage():
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastroPage():
     if request.method == 'POST':
-        nome = request.form['nome']
+        nome = request.form['nome'].strip()
         try:
             idade = int(request.form['idade'])
         except ValueError:
@@ -48,11 +48,12 @@ def cadastroPage():
         if especialidade not in sistema.lista_especialidade:
             flash('Especialidade inválida.')
             return redirect(url_for('cadastroPage'))
-        
+
         resultado = sistema.adicionar_paciente(nome, especialidade, idade)
-        flash(resultado, 'erro')
-        return redirect(url_for('homePage'))
-        
+        flash(resultado, 'erro')  
+        especialidades = list(sistema.lista_especialidade.keys())
+        return render_template('cadastro.html', especialidades=especialidades)
+
     especialidades = list(sistema.lista_especialidade.keys())
     return render_template('cadastro.html', especialidades=especialidades)
 

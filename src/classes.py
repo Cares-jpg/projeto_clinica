@@ -1,9 +1,5 @@
 from app.models.database import db, Paciente
-
-class NoPaciente:
-    def __init__(self, paciente):
-        self.paciente = paciente
-        self.proximo = None
+import re
 
 class GerenciadorPacientes:
     def __init__(self):
@@ -36,6 +32,8 @@ class GerenciadorPacientes:
         return 'Preferencial' if idade > 60 else 'Normal'
 
     def adicionar_paciente(self, nome, esp, idade):
+        if not re.fullmatch(r"[A-Za-zÀ-ÿ\s]+", nome):
+            return "Nome inválido. Use apenas letras e espaços."
         if not self.limitar_atendimento(esp):
             return f"Sem vagas para {esp} hoje."
 
