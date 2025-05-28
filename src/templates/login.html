@@ -8,7 +8,7 @@
 {% block body %}
 <div class="container">
     <img src="{{ url_for('static', filename='image/login/logo_branca_clinica.png') }}" alt="logo da clínica" class="logo" />
-
+    
     <div class="login-card">
         <h2>Login</h2>
         <form action="{{ url_for('loginPage') }}" method="post">
@@ -24,6 +24,17 @@
 
             <button type="submit">Entrar</button>
         </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-container">
+                    {% for category, message in messages %}
+                        <div class="flash-message {{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
     </div>
 </div>
 {% endblock %}

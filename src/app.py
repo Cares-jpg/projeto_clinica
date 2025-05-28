@@ -31,9 +31,7 @@ def loginPage():
 
 @app.route('/home')
 def homePage():
-    especialidades = list(sistema.lista_especialidade.keys())
-    pacientes = sistema.listar_pacientes()  
-    return render_template('home.html', especialidades=especialidades, pacientes=pacientes)
+    return render_template('home.html')
 
 
 @app.route('/cadastro', methods=['GET', 'POST'])
@@ -50,24 +48,52 @@ def cadastroPage():
         if especialidade not in sistema.lista_especialidade:
             flash('Especialidade inválida.')
             return redirect(url_for('cadastroPage'))
-
+        
         resultado = sistema.adicionar_paciente(nome, especialidade, idade)
-        flash(resultado)
+        flash(resultado, 'erro')
         return redirect(url_for('homePage'))
-
+        
     especialidades = list(sistema.lista_especialidade.keys())
     return render_template('cadastro.html', especialidades=especialidades)
+
+@app.route('/painel')
+def painelChamada():
+    especialidades = list(sistema.lista_especialidade.keys())  
+    return render_template('chamar.html', especialidades=especialidades)
 
 
 @app.route('/chamar/<especialidade>')
 def chamarPaciente(especialidade):
-    if especialidade not in sistema.lista_especialidade:
-        flash('Especialidade inválida.')
-        return redirect(url_for('homePage'))
 
     resultado = sistema.chamar_paciente(especialidade)
-    flash(resultado)
-    return redirect(url_for('homePage'))
+    especialidades = list(sistema.lista_especialidade.keys())
+    if resultado:
+        return render_template(
+            'chamar.html',
+            especialidades=especialidades,
+            senha_atual=resultado['senha'],
+            nome_paciente=resultado['nome'],
+            tipo_paciente=resultado['tipo'],
+            triagem_paciente=resultado['triagem'],
+            especialidade_atual=resultado['especialidade']
+        )
+    else:
+        return render_template(
+            'chamar.html',
+            especialidades= especialidades,
+            mensagem=f"Não há pacientes aguardando em {especialidade}.",
+            senha_atual=None,
+            nome_paciente=None,
+            tipo_paciente=None,
+            triagem_paciente=None,
+            especialidade_atual=especialidade
+        )
+
+@app.route('/listar', methods=['GET'])
+def listarPage():
+    especialidades = list(sistema.lista_especialidade.keys())
+    pacientes = sistema.listar_pacientes()  
+    return render_template('listar.html', especialidades=especialidades, pacientes=pacientes)
 
 
 @app.route('/historico')

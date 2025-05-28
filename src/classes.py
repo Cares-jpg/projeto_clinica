@@ -8,7 +8,7 @@ class NoPaciente:
 class GerenciadorPacientes:
     def __init__(self):
         self.lista_especialidade = {
-            'Clinico Geral': list(range(2, 0, -1)),
+            'Clinico Geral': list(range(3   , 0, -1)),
             'Ginecologia': list(range(30, 0, -1)),
             'Pediatria': list(range(30, 0, -1)),
             'Geriatria': list(range(30, 0, -1)),
@@ -63,11 +63,18 @@ class GerenciadorPacientes:
             paciente = Paciente.query.filter_by(specialty=especialidade, type='Normal').order_by(Paciente.id).first()
 
         if paciente:
+            dados = {   
+            'senha': paciente.password,
+            'nome': paciente.name,
+            'tipo': paciente.type,
+            'triagem': paciente.triage,
+            'especialidade': paciente.specialty
+            }
             db.session.delete(paciente)
             db.session.commit()
-            return f"Chamando senha {paciente.password} - {paciente.name} ({paciente.type}, {paciente.triage})"
-    
-        return f"Não há pacientes aguardando em {especialidade}."
+            return dados
+
+        return None
 
 
     def listar_pacientes(self):

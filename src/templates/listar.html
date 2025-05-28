@@ -2,10 +2,12 @@
 
 {% block head %}
 <title>Clínica Geral</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/listar.css') }}" />
 {% endblock %}
 
+
 {% block body %}
+
 <header class="header">
     <div class="container">
         <div class="logo-container">
@@ -16,7 +18,7 @@
                 <li><a href="{{ url_for('homePage') }}">Início</a></li>
                 <li><a href="{{ url_for('cadastroPage') }}">Cadastrar Paciente</a></li>
                 <li><a href="{{ url_for('listarPage') }}">Listar Pacientes</a></li>
-                <li><a href="{{ url_for('painelChamada') }}" target ="_blank" >Chamar Paciente</a></li>
+                <li><a href="#chamar">Chamar Paciente</a></li>
             </ul>
         </nav>
     </div>
@@ -24,7 +26,6 @@
 
 <main>
     <section class="hero">
-        <img src="{{ url_for('static', filename='image/home/bem_vindo.png') }}" alt="Bem-vindo" class="welcome-image" />
     </section>
 
 <section id="listar" class="listar-pacientes">
@@ -60,16 +61,4 @@
 </section>
 
 
-<section id="chamar" class="chamar-paciente">   
-    <h2>Chamar Próximo Paciente</h2>
-    <div class="chamar-botoes">
-        {% for esp in especialidades %}
-            <form method="get" action="{{ url_for('chamarPaciente', especialidade=esp) }}">
-                <button type="submit" class="chamar-btn">{{ esp }}</button>
-            </form>
-        {% endfor %}
-    </div>
-</section>
-
-</main>
 {% endblock %}

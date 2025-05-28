@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Clínica Geral</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/chamar.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+<main>
+   
+    <section id="chamar" class="chamar-senhas">
+        <h2>Painel de Senhas</h2>
+        <div class="painel-senha">
+            <div class="senha-atual">
+                <h3>Senha Atual</h3>
+                <div class="numero-senha">
+                    {{ senha_atual if senha_atual else 'Aguardando...' }}
+                </div>
+            </div>
+            <div class="info-paciente">
+                {% if nome_paciente %}
+                    Nome do Paciente: {{ nome_paciente }}<br>
+                    Tipo: {{ tipo_paciente }}<br>
+                    Triagem: {{ triagem_paciente }}<br>
+                    Especialidade: {{ especialidade_atual }}
+                {% else %}
+                    Nenhum paciente aguardando em {{ especialidade_atual }}.
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTÕES POR ESPECIALIDADE -->
+    <section id="chamar-especialidade" class="chamar-paciente">
+        <h2>Chamar por Especialidade</h2>
+        <div class="chamar-botoes">
+            {% for esp in especialidades %}
+                <form method="get" action="{{ url_for('chamarPaciente', especialidade=esp) }}">
+                    <button type="submit" class="chamar-btn">{{ esp }}</button>
+                </form>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+
+{% endblock %}
