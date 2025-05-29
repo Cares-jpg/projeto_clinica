@@ -20,7 +20,7 @@ Siga os passos abaixo para configurar e rodar o sistema em sua máquina local:
 
 Certifique-se de que você tem o **Python versão 3** instalado. Você pode baixá-lo em [python.org](https://www.python.org/).
 
-### Instalação
+### Como acessar
 
 1.  **Clone o repositório:**
     ```bash
@@ -71,7 +71,7 @@ pip install Flask Flask-SQLAlchemy
 5. **Rodar a Aplicação Flask**
 Agora você pode iniciar o servidor de desenvolvimento do Flask.
 
-Certifique-se de que está na pasta raiz do seu projeto  e que seu ambiente virtual está ativo.
+(Certifique-se de que está na pasta raiz do seu projeto  e que seu ambiente virtual está ativo.)
 
 ```Bash
 
@@ -90,12 +90,8 @@ Para acessar o sistema como atendente, utilize as seguintes credenciais:
 
 Nome de Usuário (Username): admin
 Senha (Password): 1234
-### Como Iniciar
 
-Para rodar a versão de console do sistema, execute o arquivo principal:
-```bash
-python src/main.py
-```
+
 
 ## Tecnologias Utilizadas
 
