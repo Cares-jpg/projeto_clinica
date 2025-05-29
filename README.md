@@ -24,7 +24,7 @@ Certifique-se de que você tem o **Python versão 3** instalado. Você pode baix
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/seu-usuario/nome-do-seu-repositorio.git](https://github.com/seu-usuario/nome-do-seu-repositorio.git)
+    git clone (https://github.com/Cares-jpg/projeto_clinica)
     ```
     (Substitua `seu-usuario/nome-do-seu-repositorio` pelo caminho correto do seu repositório no GitHub.)
 
@@ -64,9 +64,9 @@ Com o ambiente virtual ativado, instale as bibliotecas Python necessárias para 
 
 ```Bash
 
-pip install Flask Flask-SQLAlchemy
+pip install -r requirements.txt
 ```
-(Se você tiver um arquivo requirements.txt no projeto listando todas as dependências, pode usar pip install -r requirements.txt)
+
 
 5. **Rodar a Aplicação Flask**
 Agora você pode iniciar o servidor de desenvolvimento do Flask.
@@ -152,7 +152,7 @@ projeto_clinica/
 ``` 
 ## Integrantes do grupo :
 
-### Paulo Henrique
+### Paulo Henrique Cares
 ### Rafael Mesquita 
 ### Guilherme Liarte de Oliveira 
 ### João Marcos Teixeira 

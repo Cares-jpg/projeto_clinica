@@ -1,4 +1,5 @@
 from app.models.database import db, Paciente
+import re
 from sqlalchemy import case
 
 class NoPaciente:
