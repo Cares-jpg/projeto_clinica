@@ -1,5 +1,10 @@
 from app.models.database import db, Paciente
-import re
+from sqlalchemy import case
+
+class NoPaciente:
+    def __init__(self, paciente):
+        self.paciente = paciente
+        self.proximo = None
 
 class GerenciadorPacientes:
     def __init__(self):
@@ -77,4 +82,11 @@ class GerenciadorPacientes:
 
 
     def listar_pacientes(self):
-        return Paciente.query.order_by(Paciente.id).all()
+       return Paciente.query \
+        .order_by(
+            case(
+                (Paciente.type == "Preferencial", 0),
+                else_=1
+            ),
+            Paciente.date_created.asc()
+        ).all()

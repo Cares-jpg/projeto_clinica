@@ -20,7 +20,7 @@ Siga os passos abaixo para configurar e rodar o sistema em sua máquina local:
 
 Certifique-se de que você tem o **Python versão 3** instalado. Você pode baixá-lo em [python.org](https://www.python.org/).
 
-### Instalação
+### Como acessar
 
 1.  **Clone o repositório:**
     ```bash
@@ -32,13 +32,66 @@ Certifique-se de que você tem o **Python versão 3** instalado. Você pode baix
     ```bash
     cd nome-do-seu-repositorio
     ```
+3. **Configurar o Ambiente Virtual**
+É altamente recomendável usar um ambiente virtual para isolar as dependências do seu projeto.
 
-### Como Iniciar
+Criar o Ambiente Virtual:
 
-Para rodar a versão de console do sistema, execute o arquivo principal:
-```bash
-python src/main.py
+```Bash
+
+python -m venv venv
+
 ```
+(Este comando cria uma pasta chamada venv dentro do seu projeto.)
+
+Ativar o Ambiente Virtual:
+
+No Windows (PowerShell/CMD):
+```Bash
+
+.\venv\Scripts\activate
+
+```
+No Linux/macOS (Bash, Zsh, etc.):
+```Bash
+
+source venv/bin/activate
+```
+(Você verá (venv) no início da linha do seu terminal, indicando que o ambiente está ativo.)
+
+4. **Instalar as Dependências**
+Com o ambiente virtual ativado, instale as bibliotecas Python necessárias para o projeto.
+
+```Bash
+
+pip install Flask Flask-SQLAlchemy
+```
+(Se você tiver um arquivo requirements.txt no projeto listando todas as dependências, pode usar pip install -r requirements.txt)
+
+5. **Rodar a Aplicação Flask**
+Agora você pode iniciar o servidor de desenvolvimento do Flask.
+
+(Certifique-se de que está na pasta raiz do seu projeto  e que seu ambiente virtual está ativo.)
+
+```Bash
+
+python src/app.py
+```
+Você verá uma mensagem no terminal indicando que o servidor está rodando, geralmente algo como:
+Running on http://127.0.0.1:5000/
+
+6. **Acessar a Aplicação no Navegador**
+Abra seu navegador web e digite o endereço fornecido no terminal (geralmente http://127.0.0.1:5000/).
+
+Você será direcionado para a página de login.
+
+7. **Credenciais de Login (Para Atendentes)**
+Para acessar o sistema como atendente, utilize as seguintes credenciais:
+
+Nome de Usuário (Username): admin
+Senha (Password): 1234
+
+
 
 ## Tecnologias Utilizadas
 
@@ -52,28 +105,50 @@ python src/main.py
 
 5-CSS: Estilização visual das páginas (ex: style.css).
 
+6- SQLAlchemy — ORM para integração com o banco
+
 
 
 ---
 
 ## Estrutura dos Arquivos
 ```bash
-.
-├── src/
-│   ├── db/
-│   │   ├── clinica.db              # Arquivo do banco de dados SQLite (criado na primeira execução).
-│   │   ├── conexao.py              # Módulo para estabelecer a conexão com o banco de dados SQLite.
-│   │   └── tabelas.py              # Módulo que define as funções para criar a tabela de usuários e realizar operações CRUD básicas.
-│   ├── classes.py                  # Contém a lógica de negócio do sistema e a estrutura de fila (ex: `GerenciadorPacientes`).
-│   └── main.py                     # Script principal que executa o menu interativo e interage com o sistema.
-├── templates/                      # Pasta que contém os arquivos de template HTML.
-│   ├── pages/                      # Subpasta para organizar as diferentes páginas HTML.
-│   │   └── login.html              # Exemplo de uma página de login.
-│   └── styles/                     # Pasta que contém os arquivos de estilo para a interface web.
-│       └── css/                    # Subpasta para arquivos CSS.
-│           └── style.css           # Arquivo principal de estilos CSS.
-├── .gitignore                      # Arquivo que especifica quais arquivos e diretórios o Git deve ignorar (ex: arquivos de banco de dados,                                     caches, etc.).
-└── README.md                       # Este arquivo, contendo a descrição do projeto e instruções.
+projeto_clinica/
+├── src/                          # Diretório principal que contém o código-fonte da sua aplicação.
+│   ├── app/                      # Diretório que agrupa os módulos centrais da sua aplicação.
+│   │   └── models/               # Subpacote para definir os modelos de dados da aplicação.
+│   │       ├── __init__.py       # Inicializa 'models' como um pacote Python.
+│   │       └── database.py       # Define a instância do SQLAlchemy (db) e as classes de modelo (ex: 'Paciente') que mapeiam para tabelas do banco de dados.
+│   │       └── __init__.py       # **(Observação)** A presença de um segundo '__init__.py' na mesma pasta ('models/') é atípica e redundante. Um único '__init__.py' é suficiente para definir um pacote.
+│   ├── static/                   # Contém arquivos estáticos (CSS, imagens) que são servidos diretamente ao navegador do cliente.
+│   │   ├── css/                  # Folhas de estilo em cascata.
+│   │   │   ├── cadastro.css      # Estilos específicos para a página de cadastro.
+│   │   │   ├── chamar.css        # Estilos específicos para a página de chamada.
+│   │   │   ├── home.css          # Estilos específicos para a página inicial.
+│   │   │   ├── listar.css        # Estilos específicos para a página de listagem.
+│   │   │   └── login.css         # Estilos específicos para a página de login.
+│   │   └── image/                # Diretório para imagens da aplicação, organizado por contexto.
+│   │       ├── cadastro/         # Imagens usadas na página de cadastro.
+│   │       │   └── logo_clinica.png
+│   │       ├── home/             # Imagens usadas na página inicial.
+│   │       │   ├── bem_vindo.png
+│   │       │   └── logo_clinica.png
+│   │       └── login/            # Imagens usadas na página de login.
+│   │           └── logo_branca_clinica.png
+│   ├── templates/                # Contém os arquivos de template HTML (`.html`) que o Flask renderiza usando Jinja2.
+│   │   ├── base.html             # Template base que outras páginas HTML podem herdar para manter um layout consistente.
+│   │   ├── cadastro.html         # Página HTML para o formulário de cadastro de pacientes.
+│   │   ├── chamar.html           # Página HTML para a funcionalidade de chamar o próximo paciente.
+│   │   ├── home.html             # Página HTML de boas-vindas ou dashboard após o login.
+│   │   ├── listar.html           # Página HTML para exibir a lista de pacientes.
+│   │   ├── login.html            # Página HTML para autenticação de usuários.
+│   │   └── historico.html        # Página HTML para visualizar o histórico de atendimentos/pacientes.
+│   ├── __init__.py               # Inicializa 'src' como um pacote Python. Isso permite importações como 'from src.app.models.database import ...' ou 'from src.classes import ...'.
+│   ├── app.py                    # **Arquivo principal da aplicação Flask.** É o ponto de entrada que inicializa a aplicação, configura o banco de dados e define as rotas.
+│   └── classes.py                # Contém classes de lógica de negócio, como 'GerenciadorPacientes', encapsulando funcionalidades importantes do sistema.
+├── .gitignore                    # Arquivo de configuração para o Git; especifica o que deve ser ignorado (ex: arquivos .pyc).
+├── README.md                     # Documentação principal do projeto, contendo informações sobre como rodar e acessar.
+└── requirements.txt              # Lista todas as bibliotecas Python (e suas versões) das quais o projeto depende.
 ``` 
 ## Integrantes do grupo :
 
