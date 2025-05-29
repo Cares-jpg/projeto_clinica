@@ -34,6 +34,7 @@ class GerenciadorPacientes:
     def adicionar_paciente(self, nome, esp, idade):
         if not re.fullmatch(r"[A-Za-zÀ-ÿ\s]+", nome):
             return "Nome inválido. Use apenas letras e espaços."
+        
         if not self.limitar_atendimento(esp):
             return f"Sem vagas para {esp} hoje."
 
