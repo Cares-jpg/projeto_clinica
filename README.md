@@ -32,7 +32,64 @@ Certifique-se de que você tem o **Python versão 3** instalado. Você pode baix
     ```bash
     cd nome-do-seu-repositorio
     ```
+3. **Configurar o Ambiente Virtual**
+É altamente recomendável usar um ambiente virtual para isolar as dependências do seu projeto.
 
+Criar o Ambiente Virtual:
+
+```Bash
+
+python -m venv venv
+
+```
+(Este comando cria uma pasta chamada venv dentro do seu projeto.)
+
+Ativar o Ambiente Virtual:
+
+No Windows (PowerShell/CMD):
+```Bash
+
+.\venv\Scripts\activate
+
+```
+No Linux/macOS (Bash, Zsh, etc.):
+```Bash
+
+source venv/bin/activate
+```
+(Você verá (venv) no início da linha do seu terminal, indicando que o ambiente está ativo.)
+
+4. **Instalar as Dependências**
+Com o ambiente virtual ativado, instale as bibliotecas Python necessárias para o projeto.
+
+```Bash
+
+pip install Flask Flask-SQLAlchemy
+```
+(Se você tiver um arquivo requirements.txt no projeto listando todas as dependências, pode usar pip install -r requirements.txt)
+
+5. **Rodar a Aplicação Flask**
+Agora você pode iniciar o servidor de desenvolvimento do Flask.
+
+Certifique-se de que está na pasta raiz do seu projeto  e que seu ambiente virtual está ativo.
+
+```Bash
+
+python src/app.py
+```
+Você verá uma mensagem no terminal indicando que o servidor está rodando, geralmente algo como:
+Running on http://127.0.0.1:5000/
+
+6. **Acessar a Aplicação no Navegador**
+Abra seu navegador web e digite o endereço fornecido no terminal (geralmente http://127.0.0.1:5000/).
+
+Você será direcionado para a página de login.
+
+7. **Credenciais de Login (Para Atendentes)**
+Para acessar o sistema como atendente, utilize as seguintes credenciais:
+
+Nome de Usuário (Username): admin
+Senha (Password): 1234
 ### Como Iniciar
 
 Para rodar a versão de console do sistema, execute o arquivo principal:
